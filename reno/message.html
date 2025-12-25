@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- For iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="For Reine">
+
+<!-- For Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ec4899">
+
+<!-- Link to manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <!-- For iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="For Reine">
+
+<!-- For Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ec4899">
+
+<!-- Link to manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>Message | For Reine</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <style>
+    .message-nav {
+      display: flex;
+      gap: 8px;
+      padding: 12px 16px;
+      position: relative;
+      z-index: 2;
+      background: rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+    }
+
+    .message-nav__link {
+      flex: 1;
+      text-align: center;
+      padding: 10px 12px;
+      border-radius: 14px;
+      text-decoration: none;
+      font-weight: 900;
+      color: rgba(17, 24, 39, 0.75);
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(17, 24, 39, 0.1);
+      transition: all 0.2s ease;
+    }
+
+    .message-nav__link:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(17, 24, 39, 0.1);
+    }
+
+    .message-nav__link.is-active {
+      border: 0;
+      color: white;
+      background: linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(139, 92, 246, 0.95));
+    }
+
+    .message-screen {
+      display: block;
+      padding: 14px 16px 18px;
+      overflow: auto;
+      position: relative;
+      z-index: 2;
+      height: calc(100% - 60px);
+    }
+
+    .message-content {
+      background: var(--card);
+      border: 1px solid rgba(255, 255, 255, .45);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-top: 20px;
+      box-shadow: 0 10px 30px rgba(17, 24, 39, .10);
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    .message-signature {
+      text-align: right;
+      margin-top: 30px;
+      font-style: italic;
+      font-weight: 900;
+      color: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <main class="app" aria-label="Message">
+    <div class="phone" role="application" aria-label="Message for Reine">
+      <div class="bgParticles" id="bgParticles" aria-hidden="true"></div>
+
+    <!-- In message.html, use: -->
+<nav class="message-nav" aria-label="Main navigation">
+  <a href="gallery.html" class="message-nav__link">Gallery</a>
+  <a href="games.html" class="message-nav__link">Games</a>
+  <a href="message.html" class="message-nav__link is-active">Message</a>
+</nav>
+
+      <section class="message-screen">
+        <div class="card card--hero">
+          <h2 class="h2">A Message for You</h2>
+          <p class="sub">From the deepest part of my heart</p>
+        </div>
+
+        <div class="message-content">
+          <p>My dearest Reine,</p>
+          
+          <p>Every day with you feels like a beautiful dream that I never want to wake up from. Your smile lights up my world, your laughter is my favorite melody, and your love is the greatest gift I've ever received.</p>
+          
+          <p>I created this little space to show you how much you mean to me. Every photo, every memory, every moment we've shared is precious to me. You've brought so much joy, love, and meaning into my life.</p>
+          
+          <p>No matter where life takes us, know that my love for you will only grow stronger with each passing day. You are my everything, my always, my forever.</p>
+          
+          <div class="message-signature">
+            <p>With all my love,</p>
+            <p>Always yours ❤</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="bottombar" aria-label="Footer">
+        <div class="bottombar__dot"></div>
+      </footer>
+    </div>
+  </main>
+
+  <script>
+    // Background particles script
+    (() => {
+      function spawnBgParticle() {
+        const bgParticles = document.getElementById('bgParticles');
+        if (!bgParticles) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const el = document.createElement('span');
+        el.className = 'bgParticle';
+
+        const pick = Math.random();
+        el.textContent = pick < 0.72 ? '❤' : '🌹';
+
+        const x = Math.random() * 100;
+        const size = 14 + Math.random() * 20;
+        const dur = 5.5 + Math.random() * 5.5;
+        const drift = (-16 + Math.random() * 32).toFixed(2) + 'px';
+        const rot = (-18 + Math.random() * 36).toFixed(2) + 'deg';
+
+        el.style.setProperty('--x', x.toFixed(2) + '%');
+        el.style.setProperty('--size', size.toFixed(0) + 'px');
+        el.style.setProperty('--dur', dur.toFixed(2) + 's');
+        el.style.setProperty('--drift', drift);
+        el.style.setProperty('--rot', rot);
+
+        bgParticles.appendChild(el);
+
+        window.setTimeout(() => {
+          el.remove();
+        }, Math.ceil(dur * 1000) + 200);
+      }
+
+      function startParticles() {
+        const bgParticles = document.getElementById('bgParticles');
+        if (!bgParticles) return;
+        for (let i = 0; i < 8; i++) spawnBgParticle();
+        window.setInterval(spawnBgParticle, 420);
+      }
+
+      startParticles();
+    })();
+  </script>
+</body>
+</html>

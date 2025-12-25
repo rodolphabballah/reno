@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <!-- For iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="For Reine">
+
+<!-- For Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#ec4899">
+
+<!-- Link to manifest -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Apple Touch Icon -->
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <title>For Reine</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body>
+  <main class="app" aria-label="Gift app">
+    <div class="phone" role="application" aria-label="Gift for Reine">
+      <div class="bgParticles" id="bgParticles" aria-hidden="true"></div>
+      <div class="unlockOverlay" id="unlockOverlay" aria-hidden="true">
+        <div class="unlockHearts" id="unlockHearts" aria-hidden="true"></div>
+        <div class="neonWall" id="neonWall" aria-hidden="true"></div>
+      </div>
+
+      <header class="topbar">
+        <div class="topbar__title" id="topbarTitle">I found a whole universe shining in your eyes</div>
+        <button class="topbar__ghost" id="resetBtn" type="button" aria-label="Reset" hidden>Reset</button>
+      </header>
+
+      <section class="screen centered is-active" id="screen-welcome" aria-labelledby="welcomeTitle">
+        <div class="card">
+          <h1 class="h1" id="welcomeTitle">Welcome, Wife </h1>
+          <p class="sub">Reno,this is a little gift from the bottom of my heart.This gift unlocks in a few steps, let's begin.. </p>
+
+          <div class="actions">
+            <button class="btn btn-primary" id="startBtn" type="button">Start</button>
+          </div>
+
+          <p class="hint">Tip: use the things only we know.</p>
+        </div>
+      </section>
+
+      <section class="screen centered" id="screen-step1" aria-labelledby="step1Title">
+        <div class="card">
+          <div class="step">Step 1 of 3</div>
+          <h2 class="h2" id="step1Title">If love was a name, what it will be ?</h2>
+          <p class="sub">Type it exactly as you know it.</p>
+
+          <label class="field">
+            <span class="field__label">Name</span>
+            <input class="input" id="nameInput" type="text" inputmode="text" autocomplete="off" placeholder="" />
+          </label>
+
+          <div class="error" id="nameError" role="status" aria-live="polite" hidden>wle ?. Try again ya haboul.</div>
+
+          <div class="actions two">
+            <button class="btn" id="refuseBtn" type="button">Refuse</button>
+            <button class="btn btn-primary" id="nameNextBtn" type="button">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen centered" id="screen-step2" aria-labelledby="step2Title">
+        <div class="card">
+          <div class="step">Step 2 of 3</div>
+          <h2 class="h2" id="step2Title">When is the fist time did you sleep as a taken?</h2>
+          <p class="sub">Format: 12/3/2012 (or 12/12/2012)</p>
+
+          <label class="field">
+            <span class="field__label">Date</span>
+            <input class="input" id="dateInput" type="text" inputmode="numeric" autocomplete="off" placeholder="DD/MM/YYYY" />
+          </label>
+
+          <div class="error" id="dateError" role="status" aria-live="polite" hidden>Diaan ma chtaghlna aa hal site. Try again wli.</div>
+
+          <div class="actions two">
+            <button class="btn" id="backTo1Btn" type="button">Back</button>
+            <button class="btn btn-primary" id="dateNextBtn" type="button">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen centered" id="screen-step3" aria-labelledby="step3Title">
+        <div class="card">
+          <div class="step">Step 3 of 3</div>
+          <h2 class="h2" id="step3Title">Our secret number </h2>
+          <p class="sub">The first number you think of ;) .</p>
+
+          <label class="field">
+            <span class="field__label">Number</span>
+            <input class="input" id="numInput" type="password" inputmode="numeric" autocomplete="off" placeholder="" />
+          </label>
+
+          <div class="error" id="numError" role="status" aria-live="polite" hidden>Renooo fakre shwe ts2. Try again.</div>
+
+          <div class="actions two">
+            <button class="btn" id="backTo2Btn" type="button">Back</button>
+            <button class="btn btn-primary" id="unlockBtn" type="button">Unlock</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen centered" id="screen-refuse" aria-labelledby="refuseTitle">
+        <div class="card">
+          <h2 class="h2" id="refuseTitle">Okay.</h2>
+          <p class="sub">This gift stays locked until you’re ready.</p>
+          <div class="actions">
+            <button class="btn btn-primary" id="tryAgainBtn" type="button">Try again</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="screen" id="screen-gift" aria-labelledby="giftTitle">
+        <div class="libraryHead" aria-label="Library header">
+          <div class="libraryHead__title">Library</div>
+          <div class="libraryHead__row">
+            <a class="libraryHead__link" href="games.html">Games</a>
+          </div>
+          <div class="libraryHead__scan">if you are SCAN ME ;)  send me a message on rodolph2005@gmail,com</div>
+        </div>
+
+        <div class="card card--hero">
+          <h2 class="h2" id="giftTitle">So this is realy Renoooo, this is for you babe</h2>
+          <p class="sub">I love you for a thousand years. I’m so grateful for you albee. Scroll and explore a bit of my lovee.</p>
+        </div>
+
+        <section class="mix" aria-label="Memories">
+          <div class="mix__head">
+            <div class="panel__title">Photos & Videos</div>
+            <p class="panel__sub">Drop files into <code>assets/img/photos/</code> and <code>assets/video/</code>, then list them in <code>assets/js/app.js</code>.</p>
+          </div>
+
+          <div class="mix__feed" id="mixFeed" aria-label="Mixed feed"></div>
+        </section>
+
+        <div class="lightbox" id="lightbox" aria-hidden="true">
+          <button class="lightbox__close" id="lightboxClose" type="button" aria-label="Close">×</button>
+          <button class="lightbox__nav" id="lightboxPrev" type="button" aria-label="Previous">‹</button>
+          <figure class="lightbox__figure">
+            <img class="lightbox__img" id="lightboxImg" alt="" />
+            <figcaption class="lightbox__caption" id="lightboxCaption"></figcaption>
+          </figure>
+          <button class="lightbox__nav" id="lightboxNext" type="button" aria-label="Next">›</button>
+        </div>
+      </section>
+
+      <footer class="bottombar" aria-label="Footer">
+        <div class="bottombar__dot"></div>
+      </footer>
+    </div>
+  </main>
+
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
