@@ -14,8 +14,8 @@
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <style>
-    .gamesApp{min-height:100svh; display:grid; place-items:center; padding:18px}
-    .gamesPhone{width:min(390px, 100%); height:100svh; max-height:820px; border-radius:32px; background: rgba(255,255,255,.25); box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.35); backdrop-filter: blur(10px); overflow:hidden; display:flex; flex-direction:column}
+    .gamesApp{min-height:100svh; display:grid; place-items:center; padding:0}
+    .gamesPhone{width:100%; height:100svh; max-height:none; border-radius:0; background: transparent; box-shadow:none; border:none; backdrop-filter: none; overflow:hidden; display:flex; flex-direction:column}
     
     /* Navigation styles - matching gallery.html */
     .gallery-nav {
@@ -272,91 +272,31 @@
       font-size: 26px;
     }
 
-    /* Game 3: Love Messages */
-    .gameCard--messages .gameCard__header {
-      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(255, 140, 0, 0.08));
+    /* NEW GAME: Pac-Man Love Edition */
+    .gameCard--pacman .gameCard__header {
+      background: linear-gradient(135deg, rgba(255, 204, 0, 0.15), rgba(255, 153, 0, 0.1));
+    }
+    .gameCard--pacman .gameCard__icon {
+      color: #ffcc00;
     }
 
-    .gameCard--messages .gameCard__icon {
-      color: #ff8c00;
+    /* NEW GAME: Love Minesweeper */
+    .gameCard--minesweeper .gameCard__header {
+      background: linear-gradient(135deg, rgba(0, 128, 0, 0.15), rgba(0, 100, 0, 0.1));
+    }
+    .gameCard--minesweeper .gameCard__icon {
+      color: #008000;
     }
 
-    .messageInput {
-      width: 100%;
-      border-radius: 14px;
-      border: 2px solid rgba(236, 72, 153, 0.3);
-      background: rgba(255, 255, 255, 0.8);
-      padding: 14px 16px;
-      font-size: 16px;
-      outline: none;
-      margin-bottom: 12px;
-      transition: all 0.2s ease;
+    /* NEW GAME: Heart Block Breaker */
+    .gameCard--breaker .gameCard__header {
+      background: linear-gradient(135deg, rgba(255, 0, 0, 0.15), rgba(200, 0, 0, 0.1));
+    }
+    .gameCard--breaker .gameCard__icon {
+      color: #ff0000;
     }
 
-    .messageInput:focus {
-      border-color: rgba(236, 72, 153, 0.6);
-      box-shadow: 0 0 0 4px rgba(236, 72, 153, 0.15);
-    }
-
-    .loveMessages {
-      max-height: 200px;
-      overflow-y: auto;
-      margin-top: 12px;
-      padding-right: 8px;
-    }
-
-    .loveMessage {
-      background: rgba(255, 255, 255, 0.7);
-      border-radius: 14px;
-      padding: 12px 16px;
-      margin-bottom: 10px;
-      border-left: 4px solid rgba(236, 72, 153, 0.6);
-      position: relative;
-      animation: fadeIn 0.5s ease;
-    }
-
-    .loveMessage:before {
-      content: '❤️';
-      position: absolute;
-      left: -12px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 12px;
-    }
-
-    /* NEW GAME: Love Timer */
-    .gameCard--timer .gameCard__header {
-      background: linear-gradient(135deg, rgba(0, 150, 255, 0.1), rgba(100, 200, 255, 0.08));
-    }
-
-    .gameCard--timer .gameCard__icon {
-      color: #0096ff;
-    }
-
-    .timerDisplay {
-      font-size: 48px;
-      font-weight: 950;
-      text-align: center;
-      margin: 20px 0;
-      color: var(--text);
-      text-shadow: 0 2px 8px rgba(0, 150, 255, 0.2);
-    }
-
-    .timerLabel {
-      text-align: center;
-      font-weight: 800;
-      color: var(--muted);
-      margin-bottom: 16px;
-    }
-
-    .timerButtons {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* NEW GAME: Heart Tap Challenge */
+    /* Heart Tap Challenge (keeping this one) */
     .gameCard--tap .gameCard__header {
       background: linear-gradient(135deg, rgba(255, 50, 50, 0.12), rgba(255, 100, 100, 0.08));
     }
@@ -406,108 +346,6 @@
       display: flex;
       justify-content: space-around;
       margin: 16px 0;
-    }
-
-    /* NEW GAME: Love Fortune */
-    .gameCard--fortune .gameCard__header {
-      background: linear-gradient(135deg, rgba(148, 0, 211, 0.12), rgba(186, 85, 211, 0.08));
-    }
-
-    .gameCard--fortune .gameCard__icon {
-      color: #9400d3;
-    }
-
-    .fortuneButton {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, rgba(148, 0, 211, 0.2), rgba(186, 85, 211, 0.15));
-      border: 3px solid rgba(148, 0, 211, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 20px auto;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-size: 32px;
-    }
-
-    .fortuneButton:hover {
-      transform: scale(1.1) rotate(15deg);
-      border-color: rgba(148, 0, 211, 0.6);
-    }
-
-    .fortuneResult {
-      background: rgba(255, 255, 255, 0.8);
-      border-radius: 16px;
-      padding: 16px;
-      margin-top: 16px;
-      text-align: center;
-      min-height: 80px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid rgba(148, 0, 211, 0.2);
-    }
-
-    /* NEW GAME: Our Song Player */
-    .gameCard--music .gameCard__header {
-      background: linear-gradient(135deg, rgba(0, 200, 83, 0.12), rgba(76, 175, 80, 0.08));
-    }
-
-    .gameCard--music .gameCard__icon {
-      color: #00c853;
-    }
-
-    .musicPlayer {
-      text-align: center;
-    }
-
-    .musicCover {
-      width: 120px;
-      height: 120px;
-      border-radius: 20px;
-      background: linear-gradient(135deg, #ec4899, #8b5cf6);
-      margin: 0 auto 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 40px;
-      color: white;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    }
-
-    .musicTitle {
-      font-weight: 950;
-      font-size: 18px;
-      margin-bottom: 4px;
-    }
-
-    .musicArtist {
-      color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 16px;
-    }
-
-    .musicControls {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-top: 16px;
-    }
-
-    .musicBtn {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent2));
-      border: none;
-      color: white;
-      font-size: 20px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
     }
 
     /* Common animations */
@@ -650,30 +488,105 @@
             </div>
           </article>
 
-          <!-- NEW GAME 3: Love Timer -->
-          <article class="gameCard gameCard--timer floatC">
+          <!-- NEW GAME 3: Pac-Man Love Edition -->
+          <article class="gameCard gameCard--pacman floatC">
             <div class="gameCard__header">
-              <h3 class="gameCard__title">Love Countdown ⏰</h3>
-              <p class="gameCard__subtitle">Count down to our special moments</p>
-              <div class="gameCard__icon">⏰</div>
+              <h3 class="gameCard__title">Pac-Man Love Edition</h3>
+              <p class="gameCard__subtitle">Eat all the hearts and avoid the ghosts!</p>
+              <div class="gameCard__icon">👻</div>
             </div>
             <div class="gameCard__content">
-              <div class="timerLabel" id="timerLabel">Next special moment:</div>
-              <div class="timerDisplay" id="timerDisplay">00:00</div>
-              <div class="timerButtons">
-                <button class="btn-game" id="timer5min" type="button">5 Min Date</button>
-                <button class="btn-game" id="timer10min" type="button">10 Min Kiss</button>
-                <button class="btn-game" id="timer30min" type="button">30 Min Cuddle</button>
+              <div class="gameStatus" id="pacmanStatus">Use arrow keys to move!</div>
+              <div class="pacman-grid" id="pacmanGrid" style="display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; margin: 16px 0; height: 300px; background: rgba(0,0,0,0.1); border-radius: 12px; padding: 10px;">
+                <!-- Grid will be populated by JavaScript -->
               </div>
-              <div class="gameControls center" style="margin-top: 16px;">
-                <button class="btn-game" id="timerStart" type="button">Start Timer</button>
-                <button class="btn-game secondary" id="timerReset" type="button">Reset</button>
+              <div class="scoreDisplay" style="margin: 16px 0;">
+                <div class="scoreItem">
+                  <div class="scoreLabel">Score</div>
+                  <div class="scoreValue" id="pacmanScore">0</div>
+                </div>
+                <div class="scoreItem">
+                  <div class="scoreLabel">Lives</div>
+                  <div class="scoreValue" id="pacmanLives">3</div>
+                </div>
+                <div class="scoreItem">
+                  <div class="scoreLabel">Hearts</div>
+                  <div class="scoreValue" id="pacmanHearts">20</div>
+                </div>
+              </div>
+              <div class="gameControls center">
+                <button class="btn-game" id="pacmanStart" type="button">Start Game</button>
+                <button class="btn-game secondary" id="pacmanReset" type="button">Reset</button>
               </div>
             </div>
           </article>
 
-          <!-- NEW GAME 4: Heart Tap Challenge -->
-          <article class="gameCard gameCard--tap floatA">
+          <!-- NEW GAME 4: Love Minesweeper -->
+          <article class="gameCard gameCard--minesweeper floatA">
+            <div class="gameCard__header">
+              <h3 class="gameCard__title">Love Minesweeper 💣</h3>
+              <p class="gameCard__subtitle">Find all the hearts, avoid the bombs!</p>
+              <div class="gameCard__icon">💣</div>
+            </div>
+            <div class="gameCard__content">
+              <div class="gameStatus" id="minesweeperStatus">Click to reveal hearts, avoid bombs!</div>
+              <div class="minesweeper-grid" id="minesweeperGrid" style="display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; margin: 16px 0; height: 300px;">
+                <!-- Grid will be populated by JavaScript -->
+              </div>
+              <div class="scoreDisplay" style="margin: 16px 0;">
+                <div class="scoreItem">
+                  <div class="scoreLabel">Hearts Left</div>
+                  <div class="scoreValue" id="minesHearts">10</div>
+                </div>
+                <div class="scoreItem">
+                  <div class="scoreLabel">Bombs</div>
+                  <div class="scoreValue" id="minesBombs">10</div>
+                </div>
+                <div class="scoreItem">
+                  <div class="scoreLabel">Time</div>
+                  <div class="scoreValue" id="minesTime">0s</div>
+                </div>
+              </div>
+              <div class="gameControls center">
+                <button class="btn-game" id="minesStart" type="button">New Game</button>
+                <button class="btn-game secondary" id="minesHint" type="button">Hint</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- NEW GAME 5: Heart Block Breaker -->
+          <article class="gameCard gameCard--breaker floatB">
+            <div class="gameCard__header">
+              <h3 class="gameCard__title">Heart Block Breaker ❤️</h3>
+              <p class="gameCard__subtitle">Break blocks with a bouncing heart!</p>
+              <div class="gameCard__icon">💥</div>
+            </div>
+            <div class="gameCard__content">
+              <div class="gameStatus" id="breakerStatus">Move paddle with mouse/touch!</div>
+              <canvas id="breakerCanvas" width="300" height="400" style="width: 100%; height: 300px; background: rgba(236,72,153,0.1); border-radius: 12px; margin: 16px 0;"></canvas>
+              <div class="scoreDisplay" style="margin: 16px 0;">
+                <div class="scoreItem">
+                  <div class="scoreLabel">Score</div>
+                  <div class="scoreValue" id="breakerScore">0</div>
+                </div>
+                <div class="scoreItem">
+                  <div class="scoreLabel">Lives</div>
+                  <div class="scoreValue" id="breakerLives">3</div>
+                </div>
+                <div class="scoreItem">
+                  <div class="scoreLabel">Level</div>
+                  <div class="scoreValue" id="breakerLevel">1</div>
+                </div>
+              </div>
+              <div class="gameControls center">
+                <button class="btn-game" id="breakerStart" type="button">Start Game</button>
+                <button class="btn-game secondary" id="breakerPause" type="button">Pause</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Game 6: Heart Tap Challenge -->
+          <article class="gameCard gameCard--tap floatC">
             <div class="gameCard__header">
               <h3 class="gameCard__title">Heart Tap Challenge 💖</h3>
               <p class="gameCard__subtitle">How fast can you tap love?</p>
@@ -706,66 +619,6 @@
             </div>
           </article>
 
-          <!-- Game 5: Secret Love Messages -->
-          <article class="gameCard gameCard--messages floatB">
-            <div class="gameCard__header">
-              <h3 class="gameCard__title">Secret Love Notes</h3>
-              <p class="gameCard__subtitle">Leave sweet messages for each other</p>
-              <div class="gameCard__icon">💌</div>
-            </div>
-            <div class="gameCard__content">
-              <input class="messageInput" id="messageInput" type="text" placeholder="Type a sweet message for your love..." maxlength="100" />
-              <div class="gameControls">
-                <button class="btn-game" id="sendMessage" type="button">Send Love 💝</button>
-                <button class="btn-game secondary" id="clearMessages" type="button">Clear</button>
-              </div>
-              <div class="loveMessages" id="loveMessages">
-                <!-- Messages will appear here -->
-              </div>
-            </div>
-          </article>
-
-          <!-- NEW GAME 6: Love Fortune Teller -->
-          <article class="gameCard gameCard--fortune floatC">
-            <div class="gameCard__header">
-              <h3 class="gameCard__title">Love Fortune Teller 🔮</h3>
-              <p class="gameCard__subtitle">Get romantic predictions for us</p>
-              <div class="gameCard__icon">🔮</div>
-            </div>
-            <div class="gameCard__content">
-              <div class="fortuneButton" id="fortuneButton">
-                💖
-              </div>
-              <div class="fortuneResult" id="fortuneResult">
-                Tap the heart to see our romantic fortune...
-              </div>
-              <div class="gameControls center" style="margin-top: 16px;">
-                <button class="btn-game" id="newFortune" type="button">New Fortune</button>
-              </div>
-            </div>
-          </article>
-
-          <!-- NEW GAME 7: Our Song Player -->
-          <article class="gameCard gameCard--music floatA">
-            <div class="gameCard__header">
-              <h3 class="gameCard__title">Our Song Player 🎵</h3>
-              <p class="gameCard__subtitle">Play our favorite romantic tunes</p>
-              <div class="gameCard__icon">🎵</div>
-            </div>
-            <div class="gameCard__content">
-              <div class="musicPlayer">
-                <div class="musicCover" id="musicCover">🎵</div>
-                <div class="musicTitle" id="musicTitle">Our Love Song</div>
-                <div class="musicArtist" id="musicArtist">Reine & Rodolph</div>
-                <div class="musicControls">
-                  <button class="musicBtn" id="musicPrev" type="button">⏮</button>
-                  <button class="musicBtn" id="musicPlay" type="button">▶️</button>
-                  <button class="musicBtn" id="musicNext" type="button">⏭</button>
-                </div>
-              </div>
-            </div>
-          </article>
-
         </div>
 
         <div class="romanticNote" style="margin-top: 20px;">
@@ -777,7 +630,11 @@
   </main>
 
   <script>
-    // Background particles
+    // Ensure page starts at top
+    window.scrollTo(0, 0);
+    document.documentElement.scrollTop = 0;
+
+    // Background particles with enhanced emojis
     (() => {
       function spawnBgParticle() {
         const bgParticles = document.getElementById('bgParticles');
@@ -787,8 +644,14 @@
         const el = document.createElement('span');
         el.className = 'bgParticle';
 
+        // Enhanced emoji selection with more variety
+        const heartEmojis = ['❤️', '💙', '🖤', '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥️', '🔥', '💌'];
+        const roseEmojis = ['🌹', '🌸', '💐', '🌺', '🌷', '🌼'];
+        const allEmojis = [...heartEmojis, ...roseEmojis];
+        
+        
         const pick = Math.random();
-        el.textContent = pick < 0.72 ? '❤' : '🌹';
+        el.textContent = allEmojis[Math.floor(Math.random() * allEmojis.length)];
 
         const x = Math.random() * 100;
         const size = 14 + Math.random() * 20;
@@ -1018,141 +881,507 @@
       createMemoryGame();
     })();
 
-    // NEW GAME 3: Love Timer
+    // NEW GAME 3: Pac-Man Love Edition
     (() => {
-      const timerDisplay = document.getElementById('timerDisplay');
-      const timerLabel = document.getElementById('timerLabel');
-      const timerStart = document.getElementById('timerStart');
-      const timerReset = document.getElementById('timerReset');
-      const timer5min = document.getElementById('timer5min');
-      const timer10min = document.getElementById('timer10min');
-      const timer30min = document.getElementById('timer30min');
-
-      let countdown;
-      let timeLeft = 0;
-      let timerRunning = false;
-
-      const romanticMoments = [
-        { time: 300, label: "5 Min Date 💕", message: "Time for a quick romantic date!" },
-        { time: 600, label: "10 Min Kiss 💋", message: "Perfect time for a sweet kiss!" },
-        { time: 1800, label: "30 Min Cuddle 🥰", message: "Snuggle time with my love!" }
-      ];
-
-      function formatTime(seconds) {
-        const mins = Math.floor(seconds / 60);
-        const secs = seconds % 60;
-        return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
-      }
-
-      function updateTimer() {
-        timerDisplay.textContent = formatTime(timeLeft);
+      const grid = document.getElementById('pacmanGrid');
+      const status = document.getElementById('pacmanStatus');
+      const scoreEl = document.getElementById('pacmanScore');
+      const livesEl = document.getElementById('pacmanLives');
+      const heartsEl = document.getElementById('pacmanHearts');
+      const startBtn = document.getElementById('pacmanStart');
+      const resetBtn = document.getElementById('pacmanReset');
+      
+      let pacman = { x: 5, y: 5 };
+      let ghosts = [{ x: 2, y: 2 }, { x: 8, y: 2 }, { x: 2, y: 8 }, { x: 8, y: 8 }];
+      let hearts = [];
+      let score = 0;
+      let lives = 3;
+      let gameActive = false;
+      
+      function initGame() {
+        // Create 10x10 grid
+        grid.innerHTML = '';
+        hearts = [];
         
-        if (timeLeft <= 0) {
-          clearInterval(countdown);
-          timerRunning = false;
-          timerStart.textContent = "Start Timer";
-          timerDisplay.style.color = "#ec4899";
-          timerLabel.textContent = "Time's up! 💖";
-          
-          // Play romantic sound notification
-          playTimerComplete();
-        } else if (timeLeft <= 10) {
-          timerDisplay.style.color = "#ff3232";
-          timerLabel.textContent = "Almost there! ❤️";
-        } else {
-          timerDisplay.style.color = "var(--text)";
+        for(let y = 0; y < 10; y++) {
+          for(let x = 0; x < 10; x++) {
+            const cell = document.createElement('div');
+            cell.className = 'pacman-cell';
+            cell.dataset.x = x;
+            cell.dataset.y = y;
+            grid.appendChild(cell);
+            
+            // Add hearts randomly (except pacman position)
+            if(Math.random() > 0.7 && !(x === pacman.x && y === pacman.y)) {
+              hearts.push({ x, y });
+            }
+          }
         }
+        updateDisplay();
       }
-
-      function startTimer(duration, label, message) {
-        if (timerRunning) {
-          clearInterval(countdown);
-          timerRunning = false;
-          timerStart.textContent = "Start Timer";
-          return;
-        }
-
-        timeLeft = duration;
-        timerLabel.textContent = message || label;
-        timerRunning = true;
-        timerStart.textContent = "Pause Timer";
+      
+      function updateDisplay() {
+        const cells = grid.querySelectorAll('.pacman-cell');
+        cells.forEach(cell => {
+          const x = parseInt(cell.dataset.x);
+          const y = parseInt(cell.dataset.y);
+          
+          cell.innerHTML = '';
+          
+          // Draw pacman
+          if(x === pacman.x && y === pacman.y) {
+            cell.innerHTML = '😊';
+            cell.style.background = '#ffcc00';
+          }
+          // Draw ghosts
+          else if(ghosts.some(g => g.x === x && g.y === y)) {
+            cell.innerHTML = '👻';
+            cell.style.background = '#9966ff';
+          }
+          // Draw hearts
+          else if(hearts.some(h => h.x === x && h.y === y)) {
+            cell.innerHTML = '❤️';
+            cell.style.background = '#ff9999';
+          }
+          else {
+            cell.style.background = 'rgba(255,255,255,0.8)';
+          }
+        });
         
-        updateTimer();
+        scoreEl.textContent = score;
+        livesEl.textContent = lives;
+        heartsEl.textContent = hearts.length;
+      }
+      
+      function movePacman(dx, dy) {
+        if(!gameActive) return;
         
-        countdown = setInterval(() => {
-          timeLeft--;
-          updateTimer();
-        }, 1000);
-      }
-
-      function playTimerComplete() {
-        // Create a simple notification sound
-        try {
-          const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-          const oscillator = audioContext.createOscillator();
-          const gainNode = audioContext.createGain();
-          
-          oscillator.connect(gainNode);
-          gainNode.connect(audioContext.destination);
-          
-          oscillator.frequency.setValueAtTime(523.25, audioContext.currentTime); // C5
-          oscillator.frequency.setValueAtTime(659.25, audioContext.currentTime + 0.1); // E5
-          oscillator.frequency.setValueAtTime(783.99, audioContext.currentTime + 0.2); // G5
-          
-          gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
-          gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
-          
-          oscillator.start(audioContext.currentTime);
-          oscillator.stop(audioContext.currentTime + 0.5);
-        } catch (e) {
-          console.log("Audio not supported");
+        pacman.x = Math.max(0, Math.min(9, pacman.x + dx));
+        pacman.y = Math.max(0, Math.min(9, pacman.y + dy));
+        
+        // Check for heart collection
+        hearts = hearts.filter(h => !(h.x === pacman.x && h.y === pacman.y));
+        if(hearts.length === 0) {
+          status.textContent = 'All hearts collected! You win! ❤️';
+          gameActive = false;
         }
-      }
-
-      timer5min.addEventListener('click', () => {
-        if (timerRunning) return;
-        timeLeft = 300;
-        updateTimer();
-        timerLabel.textContent = romanticMoments[0].message;
-      });
-
-      timer10min.addEventListener('click', () => {
-        if (timerRunning) return;
-        timeLeft = 600;
-        updateTimer();
-        timerLabel.textContent = romanticMoments[1].message;
-      });
-
-      timer30min.addEventListener('click', () => {
-        if (timerRunning) return;
-        timeLeft = 1800;
-        updateTimer();
-        timerLabel.textContent = romanticMoments[2].message;
-      });
-
-      timerStart.addEventListener('click', () => {
-        if (timeLeft <= 0) {
-          timeLeft = 300; // Default 5 minutes
-          timerLabel.textContent = romanticMoments[0].message;
+        
+        // Check ghost collision
+        if(ghosts.some(g => g.x === pacman.x && g.y === pacman.y)) {
+          lives--;
+          if(lives <= 0) {
+            status.textContent = 'Game Over! 💔';
+            gameActive = false;
+          } else {
+            status.textContent = 'Hit by a ghost! Lives: ' + lives;
+            pacman = { x: 5, y: 5 };
+          }
         }
-        startTimer(timeLeft, timerLabel.textContent);
+        
+        updateDisplay();
+      }
+      
+      // Keyboard controls
+      document.addEventListener('keydown', (e) => {
+        if(!gameActive) return;
+        switch(e.key) {
+          case 'ArrowUp': movePacman(0, -1); break;
+          case 'ArrowDown': movePacman(0, 1); break;
+          case 'ArrowLeft': movePacman(-1, 0); break;
+          case 'ArrowRight': movePacman(1, 0); break;
+        }
       });
-
-      timerReset.addEventListener('click', () => {
-        clearInterval(countdown);
-        timerRunning = false;
-        timeLeft = 0;
-        timerStart.textContent = "Start Timer";
-        timerLabel.textContent = "Next special moment:";
-        timerDisplay.textContent = "00:00";
-        timerDisplay.style.color = "var(--text)";
+      
+      startBtn.addEventListener('click', () => {
+        gameActive = true;
+        score = 0;
+        lives = 3;
+        pacman = { x: 5, y: 5 };
+        initGame();
+        status.textContent = 'Game started! Use arrow keys!';
       });
-
+      
+      resetBtn.addEventListener('click', () => {
+        gameActive = false;
+        initGame();
+        status.textContent = 'Ready to play! Click Start.';
+      });
+      
       // Initialize
-      updateTimer();
+      initGame();
     })();
 
-    // NEW GAME 4: Heart Tap Challenge
+    // NEW GAME 4: Love Minesweeper
+    (() => {
+      const grid = document.getElementById('minesweeperGrid');
+      const status = document.getElementById('minesweeperStatus');
+      const heartsEl = document.getElementById('minesHearts');
+      const bombsEl = document.getElementById('minesBombs');
+      const timeEl = document.getElementById('minesTime');
+      const startBtn = document.getElementById('minesStart');
+      const hintBtn = document.getElementById('minesHint');
+      
+      let board = [];
+      let revealed = [];
+      let gameActive = false;
+      let startTime = 0;
+      let timer;
+      
+      function createBoard() {
+        board = [];
+        revealed = [];
+        
+        // Create 8x8 board with 10 hearts and 10 bombs
+        for(let y = 0; y < 8; y++) {
+          board[y] = [];
+          revealed[y] = [];
+          for(let x = 0; x < 8; x++) {
+            // Randomly assign hearts (20% chance) and bombs (20% chance)
+            const rand = Math.random();
+            if(rand < 0.2) board[y][x] = '❤️';
+            else if(rand < 0.4) board[y][x] = '💣';
+            else board[y][x] = '';
+            revealed[y][x] = false;
+          }
+        }
+        
+        updateBoard();
+        updateCounts();
+      }
+      
+      function updateBoard() {
+        grid.innerHTML = '';
+        
+        for(let y = 0; y < 8; y++) {
+          for(let x = 0; x < 8; x++) {
+            const cell = document.createElement('div');
+            cell.className = 'minesweeper-cell';
+            cell.dataset.x = x;
+            cell.dataset.y = y;
+            
+            if(revealed[y][x]) {
+              cell.textContent = board[y][x];
+              cell.style.background = board[y][x] === '💣' ? '#ff6666' : '#99ff99';
+            } else {
+              cell.textContent = '?';
+              cell.style.background = 'rgba(255,255,255,0.9)';
+              cell.addEventListener('click', () => revealCell(x, y));
+            }
+            
+            grid.appendChild(cell);
+          }
+        }
+      }
+      
+      function revealCell(x, y) {
+        if(!gameActive || revealed[y][x]) return;
+        
+        revealed[y][x] = true;
+        
+        if(board[y][x] === '💣') {
+          status.textContent = 'Boom! Game Over! 💣';
+          gameActive = false;
+          clearInterval(timer);
+          revealAll();
+        } else if(board[y][x] === '❤️') {
+          status.textContent = 'Heart found! ❤️';
+        } else {
+          status.textContent = 'Safe! Keep going!';
+        }
+        
+        updateBoard();
+        updateCounts();
+        checkWin();
+      }
+      
+      function updateCounts() {
+        let hearts = 0, bombs = 0;
+        
+        for(let y = 0; y < 8; y++) {
+          for(let x = 0; x < 8; x++) {
+            if(board[y][x] === '❤️' && !revealed[y][x]) hearts++;
+            if(board[y][x] === '💣') bombs++;
+          }
+        }
+        
+        heartsEl.textContent = hearts;
+        bombsEl.textContent = bombs;
+      }
+      
+      function checkWin() {
+        let allHeartsFound = true;
+        
+        for(let y = 0; y < 8; y++) {
+          for(let x = 0; x < 8; x++) {
+            if(board[y][x] === '❤️' && !revealed[y][x]) {
+              allHeartsFound = false;
+              break;
+            }
+          }
+        }
+        
+        if(allHeartsFound) {
+          status.textContent = 'All hearts found! You win! 🎉';
+          gameActive = false;
+          clearInterval(timer);
+        }
+      }
+      
+      function revealAll() {
+        for(let y = 0; y < 8; y++) {
+          for(let x = 0; x < 8; x++) {
+            revealed[y][x] = true;
+          }
+        }
+        updateBoard();
+      }
+      
+      function startTimer() {
+        startTime = Date.now();
+        clearInterval(timer);
+        timer = setInterval(() => {
+          const elapsed = Math.floor((Date.now() - startTime) / 1000);
+          timeEl.textContent = elapsed + 's';
+        }, 1000);
+      }
+      
+      startBtn.addEventListener('click', () => {
+        gameActive = true;
+        createBoard();
+        startTimer();
+        status.textContent = 'Game started! Click cells to find hearts!';
+      });
+      
+      hintBtn.addEventListener('click', () => {
+        if(!gameActive) return;
+        // Reveal one random safe cell
+        let safeCells = [];
+        for(let y = 0; y < 8; y++) {
+          for(let x = 0; x < 8; x++) {
+            if(!revealed[y][x] && board[y][x] !== '💣') {
+              safeCells.push({x, y});
+            }
+          }
+        }
+        if(safeCells.length > 0) {
+          const hint = safeCells[Math.floor(Math.random() * safeCells.length)];
+          revealCell(hint.x, hint.y);
+        }
+      });
+      
+      // Initialize
+      createBoard();
+    })();
+
+    // NEW GAME 5: Heart Block Breaker
+    (() => {
+      const canvas = document.getElementById('breakerCanvas');
+      const ctx = canvas.getContext('2d');
+      const status = document.getElementById('breakerStatus');
+      const scoreEl = document.getElementById('breakerScore');
+      const livesEl = document.getElementById('breakerLives');
+      const levelEl = document.getElementById('breakerLevel');
+      const startBtn = document.getElementById('breakerStart');
+      const pauseBtn = document.getElementById('breakerPause');
+      
+      let gameRunning = false;
+      let paused = false;
+      let score = 0;
+      let lives = 3;
+      let level = 1;
+      
+      // Game objects
+      let paddle = { x: canvas.width/2 - 40, y: canvas.height - 20, width: 80, height: 10 };
+      let heart = { x: canvas.width/2, y: canvas.height/2, dx: 3, dy: -3, radius: 8 };
+      let blocks = [];
+      
+      function createBlocks() {
+        blocks = [];
+        const rows = 3 + level;
+        const cols = 6;
+        const blockWidth = canvas.width / cols - 10;
+        const blockHeight = 20;
+        
+        for(let i = 0; i < rows; i++) {
+          for(let j = 0; j < cols; j++) {
+            blocks.push({
+              x: j * (blockWidth + 10) + 5,
+              y: i * (blockHeight + 5) + 30,
+              width: blockWidth,
+              height: blockHeight,
+              color: `hsl(${i * 60}, 70%, 60%)`
+            });
+          }
+        }
+      }
+      
+      function draw() {
+        // Clear canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Draw paddle
+        ctx.fillStyle = '#ec4899';
+        ctx.fillRect(paddle.x, paddle.y, paddle.width, paddle.height);
+        ctx.strokeStyle = '#fff';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(paddle.x, paddle.y, paddle.width, paddle.height);
+        
+        // Draw heart
+        ctx.fillStyle = '#ff3232';
+        ctx.beginPath();
+        ctx.arc(heart.x, heart.y, heart.radius, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#fff';
+        ctx.font = '12px Arial';
+        ctx.fillText('❤️', heart.x - 6, heart.y + 4);
+        
+        // Draw blocks
+        blocks.forEach(block => {
+          ctx.fillStyle = block.color;
+          ctx.fillRect(block.x, block.y, block.width, block.height);
+          ctx.strokeStyle = '#fff';
+          ctx.lineWidth = 1;
+          ctx.strokeRect(block.x, block.y, block.width, block.height);
+        });
+        
+        // Draw score
+        ctx.fillStyle = '#111827';
+        ctx.font = '14px Arial';
+        ctx.fillText(`Score: ${score}`, 10, 20);
+        ctx.fillText(`Lives: ${lives}`, canvas.width - 70, 20);
+      }
+      
+      function update() {
+        if(paused || !gameRunning) return;
+        
+        // Move heart
+        heart.x += heart.dx;
+        heart.y += heart.dy;
+        
+        // Wall collision
+        if(heart.x - heart.radius < 0 || heart.x + heart.radius > canvas.width) {
+          heart.dx = -heart.dx;
+        }
+        if(heart.y - heart.radius < 0) {
+          heart.dy = -heart.dy;
+        }
+        
+        // Bottom wall (lose life)
+        if(heart.y + heart.radius > canvas.height) {
+          lives--;
+          if(lives <= 0) {
+            gameRunning = false;
+            status.textContent = 'Game Over! 💔';
+          } else {
+            resetHeart();
+            status.textContent = `Life lost! ${lives} remaining`;
+          }
+        }
+        
+        // Paddle collision
+        if(heart.y + heart.radius > paddle.y && 
+           heart.y - heart.radius < paddle.y + paddle.height &&
+           heart.x > paddle.x && heart.x < paddle.x + paddle.width) {
+          heart.dy = -Math.abs(heart.dy);
+          // Change angle based on where it hits the paddle
+          const hitPos = (heart.x - paddle.x) / paddle.width;
+          heart.dx = 5 * (hitPos - 0.5);
+        }
+        
+        // Block collision
+        for(let i = blocks.length - 1; i >= 0; i--) {
+          const block = blocks[i];
+          
+          if(heart.x + heart.radius > block.x && 
+             heart.x - heart.radius < block.x + block.width &&
+             heart.y + heart.radius > block.y && 
+             heart.y - heart.radius < block.y + block.height) {
+            
+            blocks.splice(i, 1);
+            heart.dy = -heart.dy;
+            score += 10;
+            
+            if(blocks.length === 0) {
+              level++;
+              levelEl.textContent = level;
+              createBlocks();
+              resetHeart();
+              heart.dx *= 1.1;
+              heart.dy *= 1.1;
+              status.textContent = `Level ${level}! Speed increased!`;
+            }
+            
+            break;
+          }
+        }
+        
+        // Update display
+        scoreEl.textContent = score;
+        livesEl.textContent = lives;
+        
+        draw();
+      }
+      
+      function resetHeart() {
+        heart.x = canvas.width/2;
+        heart.y = canvas.height/2;
+        heart.dx = 3;
+        heart.dy = -3;
+      }
+      
+      // Mouse/touch controls
+      canvas.addEventListener('mousemove', (e) => {
+        if(!gameRunning) return;
+        const rect = canvas.getBoundingClientRect();
+        paddle.x = e.clientX - rect.left - paddle.width/2;
+        paddle.x = Math.max(0, Math.min(canvas.width - paddle.width, paddle.x));
+      });
+      
+      canvas.addEventListener('touchmove', (e) => {
+        if(!gameRunning) return;
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const touch = e.touches[0];
+        paddle.x = touch.clientX - rect.left - paddle.width/2;
+        paddle.x = Math.max(0, Math.min(canvas.width - paddle.width, paddle.x));
+      }, { passive: false });
+      
+      startBtn.addEventListener('click', () => {
+        if(!gameRunning) {
+          gameRunning = true;
+          paused = false;
+          score = 0;
+          lives = 3;
+          level = 1;
+          createBlocks();
+          resetHeart();
+          status.textContent = 'Game started! Move paddle with mouse/touch';
+          pauseBtn.textContent = 'Pause';
+          gameLoop();
+        }
+      });
+      
+      pauseBtn.addEventListener('click', () => {
+        if(gameRunning) {
+          paused = !paused;
+          pauseBtn.textContent = paused ? 'Resume' : 'Pause';
+          status.textContent = paused ? 'Game Paused' : 'Game resumed!';
+        }
+      });
+      
+      function gameLoop() {
+        update();
+        if(gameRunning && !paused) {
+          requestAnimationFrame(gameLoop);
+        }
+      }
+      
+      // Initialize
+      createBlocks();
+      draw();
+    })();
+
+    // Game 6: Heart Tap Challenge
     (() => {
       const tapArea = document.getElementById('tapArea');
       const tapHeart = document.getElementById('tapHeart');
@@ -1236,218 +1465,6 @@
       
       // Initialize
       updateDisplay();
-    })();
-
-    // Game 5: Secret Love Messages
-    (() => {
-      const messageInput = document.getElementById('messageInput');
-      const sendMessage = document.getElementById('sendMessage');
-      const clearMessages = document.getElementById('clearMessages');
-      const loveMessages = document.getElementById('loveMessages');
-
-      const romanticMessages = [];
-
-      function saveMessages(messages) {
-        localStorage.setItem('loveMessages', JSON.stringify(messages));
-      }
-
-      function loadMessages() {
-        const saved = localStorage.getItem('loveMessages');
-        return saved ? JSON.parse(saved) : [];
-      }
-
-      function renderMessages() {
-        const messages = loadMessages();
-        loveMessages.innerHTML = '';
-        
-        // Show empty state if no messages
-        if (messages.length === 0) {
-          const emptyMsg = document.createElement('div');
-          emptyMsg.className = 'loveMessage';
-          emptyMsg.style.opacity = '0.6';
-          emptyMsg.style.fontStyle = 'italic';
-          emptyMsg.innerHTML = `
-            <div style="font-weight: 700; margin-bottom: 4px;">The love notes box is empty...</div>
-            <div style="font-size: 11px; color: var(--muted);">Write your first sweet message above 💝</div>
-          `;
-          loveMessages.appendChild(emptyMsg);
-          return;
-        }
-        
-        messages.forEach(msg => {
-          const messageEl = document.createElement('div');
-          messageEl.className = 'loveMessage';
-          messageEl.innerHTML = `
-            <div style="font-weight: 800; margin-bottom: 4px;">${msg.text}</div>
-            <div style="font-size: 11px; color: var(--muted);">${msg.time}</div>
-          `;
-          loveMessages.appendChild(messageEl);
-        });
-        
-        loveMessages.scrollTop = loveMessages.scrollHeight;
-      }
-
-      sendMessage.addEventListener('click', () => {
-        const text = messageInput.value.trim();
-        if(text) {
-          const messages = loadMessages();
-          messages.push({
-            text: text,
-            time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-          });
-          saveMessages(messages);
-          renderMessages();
-          messageInput.value = '';
-          messageInput.focus();
-        }
-      });
-
-      messageInput.addEventListener('keydown', (e) => {
-        if(e.key === 'Enter') {
-          sendMessage.click();
-        }
-      });
-
-      clearMessages.addEventListener('click', () => {
-        if(confirm('Clear all love messages?')) {
-          localStorage.removeItem('loveMessages');
-          renderMessages();
-        }
-      });
-
-      // Initialize
-      renderMessages();
-      messageInput.focus();
-    })();
-
-    // NEW GAME 6: Love Fortune Teller
-    (() => {
-      const fortuneButton = document.getElementById('fortuneButton');
-      const fortuneResult = document.getElementById('fortuneResult');
-      const newFortune = document.getElementById('newFortune');
-
-      const fortunes = [
-        "Your love will grow stronger every day! 🌟",
-        "A romantic surprise is coming your way! 💝",
-        "Your bond will deepen with each passing moment! 💑",
-        "A special memory will be created soon! 📸",
-        "Your hearts will beat as one forever! 💓",
-        "Love will find new ways to blossom between you! 🌷",
-        "Your connection will withstand all tests! 💪",
-        "A sweet moment of tenderness awaits! 🥰",
-        "Your love story will inspire others! 📖",
-        "The universe conspires to bring you closer! ✨",
-        "Your souls were meant to find each other! 💫",
-        "Every day with love is a blessing counted! 🙏",
-        "Your laughter will echo through happy years! 😄",
-        "Small gestures will mean the world to you both! 🎁",
-        "Your love is written in the stars! 🌌"
-      ];
-
-      function getRandomFortune() {
-        return fortunes[Math.floor(Math.random() * fortunes.length)];
-      }
-
-      function showFortune() {
-        fortuneButton.style.transform = 'scale(0.9)';
-        fortuneResult.style.opacity = '0.5';
-        
-        setTimeout(() => {
-          const fortune = getRandomFortune();
-          fortuneResult.textContent = fortune;
-          fortuneResult.style.opacity = '1';
-          fortuneButton.style.transform = 'scale(1)';
-          
-          // Change button icon
-          const icons = ['💖', '💕', '💗', '💓', '💞', '💘', '💝'];
-          fortuneButton.textContent = icons[Math.floor(Math.random() * icons.length)];
-        }, 300);
-      }
-
-      fortuneButton.addEventListener('click', showFortune);
-      newFortune.addEventListener('click', showFortune);
-      
-      // Initialize with first fortune
-      fortuneResult.textContent = "Tap the heart to see our romantic fortune...";
-    })();
-
-    // NEW GAME 7: Our Song Player
-    (() => {
-      const musicCover = document.getElementById('musicCover');
-      const musicTitle = document.getElementById('musicTitle');
-      const musicArtist = document.getElementById('musicArtist');
-      const musicPlay = document.getElementById('musicPlay');
-      const musicPrev = document.getElementById('musicPrev');
-      const musicNext = document.getElementById('musicNext');
-
-      const songs = [
-        { title: "Our Love Song", artist: "Reine & Rodolph", emoji: "🎵" },
-        { title: "Heartbeat Melody", artist: "Forever Us", emoji: "💓" },
-        { title: "Eternal Romance", artist: "Two Souls", emoji: "💑" },
-        { title: "Sweet Serenade", artist: "Love's Harmony", emoji: "🎶" },
-        { title: "Dancing Stars", artist: "Night Sky Duet", emoji: "✨" }
-      ];
-
-      let currentSong = 0;
-      let isPlaying = false;
-
-      function updateSong() {
-        const song = songs[currentSong];
-        musicTitle.textContent = song.title;
-        musicArtist.textContent = song.artist;
-        musicCover.textContent = song.emoji;
-        
-        // Change cover gradient based on song
-        const gradients = [
-          "linear-gradient(135deg, #ec4899, #8b5cf6)",
-          "linear-gradient(135deg, #ff69b4, #ff1493)",
-          "linear-gradient(135deg, #00c853, #0096ff)",
-          "linear-gradient(135deg, #ff8c00, #ffd700)",
-          "linear-gradient(135deg, #9400d3, #4b0082)"
-        ];
-        musicCover.style.background = gradients[currentSong];
-      }
-
-      function playPause() {
-        isPlaying = !isPlaying;
-        musicPlay.textContent = isPlaying ? "⏸️" : "▶️";
-        
-        if (isPlaying) {
-          musicCover.style.animation = "pulse 1.5s infinite";
-        } else {
-          musicCover.style.animation = "none";
-        }
-      }
-
-      function nextSong() {
-        currentSong = (currentSong + 1) % songs.length;
-        updateSong();
-        if (isPlaying) {
-          // Reset animation
-          musicCover.style.animation = "none";
-          setTimeout(() => {
-            musicCover.style.animation = "pulse 1.5s infinite";
-          }, 10);
-        }
-      }
-
-      function prevSong() {
-        currentSong = (currentSong - 1 + songs.length) % songs.length;
-        updateSong();
-        if (isPlaying) {
-          musicCover.style.animation = "none";
-          setTimeout(() => {
-            musicCover.style.animation = "pulse 1.5s infinite";
-          }, 10);
-        }
-      }
-
-      musicPlay.addEventListener('click', playPause);
-      musicNext.addEventListener('click', nextSong);
-      musicPrev.addEventListener('click', prevSong);
-
-      // Initialize
-      updateSong();
     })();
   </script>
 </body>

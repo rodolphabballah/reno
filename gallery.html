@@ -13,17 +13,24 @@
   <meta name="theme-color" content="#ec4899">
   <link rel="manifest" href="manifest.json">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
-  <style>
-    /* Navigation styles */
+   <style>
+    /* FIXED HEADER STYLES */
     .gallery-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
       display: flex;
       gap: 8px;
       padding: 12px 16px;
-      position: relative;
-      z-index: 2;
-      background: rgba(255, 255, 255, 0.25);
+      /* CHANGE THIS LINE - Remove white background */
+      background: transparent;
+      /* Or if you want a semi-transparent dark background like other pages, use: */
+      /* background: rgba(0, 0, 0, 0.3); */
       backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.35);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
     }
 
     .gallery-nav__link {
@@ -50,32 +57,80 @@
       background: linear-gradient(135deg, rgba(236, 72, 153, 0.95), rgba(139, 92, 246, 0.95));
     }
 
-    /* Gallery specific styles */
-    .gallery-screen {
-      display: block;
-      padding: 14px 16px 18px;
-      overflow: auto;
+    /* Add padding to body to account for fixed header */
+    body {
+      padding-top: 60px;
+    }
+
+    /* HEARTS AND ROSES BACKGROUND STYLES */
+    .bgParticles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -1;
+      overflow: hidden;
+    }
+
+    .bgParticle {
+      position: absolute;
+      top: 110%;
+      left: var(--x, 50%);
+      font-size: var(--size, 20px);
+      opacity: 0.8;
+      animation: floatUp var(--dur, 6s) ease-in forwards;
+      animation-delay: var(--delay, 0s);
+      will-change: transform, opacity;
+      filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) translateX(0) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.8;
+      }
+      90% {
+        opacity: 0.6;
+      }
+      100% {
+        transform: translateY(calc(-100vh - 100px)) translateX(var(--drift, 0)) rotate(var(--rot, 0));
+        opacity: 0;
+      }
+    }
+
+    /* Adjust phone container for fixed header */
+    .phone {
       position: relative;
-      z-index: 2;
-      height: calc(100% - 60px);
+      z-index: 1;
+    }
+
+    /* Fix for gallery screen spacing */
+    .gallery-screen {
+      margin-top: 0;
+      padding-top: 0;
     }
   </style>
 </head>
 <body>
   <main class="app" aria-label="Gallery">
     <div class="phone" role="application" aria-label="Gallery for Reine">
+      <!-- Background hearts and roses particles -->
       <div class="bgParticles" id="bgParticles" aria-hidden="true"></div>
 
-      <!-- In gallery.html, replace the navigation with this: -->
-<nav class="gallery-nav" aria-label="Main navigation">
-  <a href="gallery.html" class="gallery-nav__link is-active">Gallery</a>
-  <a href="games.html" class="gallery-nav__link">Games</a>
-  <a href="message.html" class="gallery-nav__link">Message</a>
-</nav>
+      <!-- Fixed navigation header -->
+      <nav class="gallery-nav" aria-label="Main navigation">
+        <a href="gallery.html" class="gallery-nav__link is-active">Gallery</a>
+        <a href="games.html" class="gallery-nav__link">Games</a>
+        <a href="message.html" class="gallery-nav__link">Message</a>
+      </nav>
 
       <section class="gallery-screen" id="gallery-content" aria-labelledby="giftTitle">
-        <!-- Library block removed here -->
-
+        <!-- The rest of your gallery.html content remains exactly the same -->
         <div class="card card--hero">
           <h2 class="h2" id="giftTitle">So this is really Renoooo, this is for you babe</h2>
           <p class="sub">I love you for a thousand years. I'm so grateful for you albee. Scroll and explore a bit of my love.</p>
@@ -111,8 +166,35 @@
 
   <script>
     (() => {
+      // Ensure page starts at top
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+
       // Copy the photos and videos arrays from app.js
-      const photos = [];
+        const photos = [
+    { src: 'assets/img/photos/1.jpeg', caption: 'Every love story is beautiful, but ours is my favorite. ❤️' },
+    { src: 'assets/img/photos/2.jpeg', caption: 'In your eyes, I found my home. 🏡' },
+    { src: 'assets/img/photos/3.jpeg', caption: 'You are my today and all of my tomorrows. 🌅' },
+    { src: 'assets/img/photos/4.jpeg', caption: 'My heart is and always will be yours. 💓' },
+    { src: 'assets/img/photos/5.jpeg', caption: 'I love you more than I have ever found a way to say to you. 💌' },
+    { src: 'assets/img/photos/6.jpeg', caption: 'You are my sun, my moon, and all my stars. 🌟' },
+    { src: 'assets/img/photos/7.jpeg', caption: 'Forever is a long time, but I wouldn\'t mind spending it by your side. ⏳' },
+    { src: 'assets/img/photos/8.jpeg', caption: 'I saw that you were perfect, and so I loved you. Then I saw that you were not perfect and I loved you even more. 💖' },
+    { src: 'assets/img/photos/9.jpeg', caption: 'You\'re the butter to my bread, the breath to my life. 🍞' },
+    { src: 'assets/img/photos/10.jpeg', caption: 'I choose you. And I\'ll choose you over and over and over. Without pause, without a doubt, in a heartbeat. I\'ll keep choosing you. 💝' },
+    { src: 'assets/img/photos/11.jpeg', caption: 'You are my paradise and I\'d happily get stranded on you for a lifetime. 🏝️' },
+    { src: 'assets/img/photos/12.jpeg', caption: 'I love you not only for what you are, but for what I am when I am with you. 🌹' },
+    { src: 'assets/img/photos/13.jpeg', caption: 'If I had a flower for every time I thought of you, I could walk through my garden forever. 🌷' },
+    { src: 'assets/img/photos/14.jpeg', caption: 'You are the poem I never knew how to write and this life is the story I have always wanted to tell. 📖' },
+    { src: 'assets/img/photos/15.jpeg', caption: 'I never want to stop making memories with you. 📸' },
+    { src: 'assets/img/photos/16.jpeg', caption: 'Your love is all I need to feel complete. ✨' },
+    { src: 'assets/img/photos/17.jpeg', caption: 'Every moment with you is like a beautiful dream come true. 💭' },
+    { src: 'assets/img/photos/18.jpeg', caption: 'You are my greatest adventure. 🗺️' },
+    { src: 'assets/img/photos/19.jpeg', caption: 'Loving you is the best thing that ever happened to me. 💫' },
+    { src: 'assets/img/photos/20.jpeg', caption: 'You make my heart smile. 😊' },
+    { src: 'assets/img/photos/21.jpeg', caption: 'I fell in love with you because of the million things you never knew you were doing. 🥰' },
+    { src: 'assets/img/photos/22.jpeg', caption: 'My love for you is a journey starting at forever and ending at never. ♾️' }
+  ];
       const videos = [];
 
       const mixFeed = document.getElementById('mixFeed');
@@ -255,7 +337,7 @@
         if (e.key === 'ArrowRight') nextPhoto();
       });
 
-      // Start background particles
+      // Start background particles with enhanced emojis
       function spawnBgParticle() {
         const bgParticles = document.getElementById('bgParticles');
         if (!bgParticles) return;
@@ -264,8 +346,13 @@
         const el = document.createElement('span');
         el.className = 'bgParticle';
 
+        // Enhanced emoji selection with more variety
+        const heartEmojis = ['❤️', '💙', '🖤',  '❣️', '💕', '💞', '💓', '💗', '💖', '💘', '💝', '💟', '♥️', '🔥', '💌'];
+        const roseEmojis = ['🌹', '🌸', '💐', '🌺', '🌷', '🌼'];
+        const allEmojis = [...heartEmojis, ...roseEmojis];
+        
         const pick = Math.random();
-        el.textContent = pick < 0.72 ? '❤' : '🌹';
+        el.textContent = allEmojis[Math.floor(Math.random() * allEmojis.length)];
 
         const x = Math.random() * 100;
         const size = 14 + Math.random() * 20;
